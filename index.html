@@ -8,6 +8,11 @@
     />
     <title>Rick and Morty Character Log</title>
     <link rel="stylesheet" href="./styles.css" />
+    <script
+      src="./components/search-bar/search-bar.js"
+      defer
+      type="module"
+    ></script>
   </head>
   <body>
     <h1 class="title">Rick and More</h1>
@@ -20,6 +25,7 @@
             type="text"
             placeholder="search characters"
             aria-label="character name"
+            data-js="search-bar_inputField"
           />
           <button class="search-bar__button" aria-label="search for character">
             <img
