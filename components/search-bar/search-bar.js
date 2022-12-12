@@ -1,24 +1,18 @@
 console.clear();
 
-export async function getSearchResults(searchInput) {
-  const url = `https://rickandmortyapi.com/api/character/?name=${searchInput}`;
+export async function getSearchResults(url) {
+  //const url = `https://rickandmortyapi.com/api/character/?name=${searchInput}`;
 
   try {
     const response = await fetch(url);
 
     if (response.ok) {
       const data = await response.json();
-      const searchResults = data.results;
-      console.log(searchResults);
-      return searchResults; // searchResults is an Array of Objects
-
-      /*
-        searchResults.forEach((result) => {
-          // createCharacterCard(result);
-          console.log(result);
-        });*/
+      console.log("data", data);
+      return data;
     } else {
       console.error("Response is not okay");
+      alert("No Results found");
     }
   } catch (error) {
     console.error(error);
