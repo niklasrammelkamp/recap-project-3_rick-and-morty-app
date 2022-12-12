@@ -1,5 +1,7 @@
-export function createCharacterCard() {
-  console.log("hi");
+export function createCharacterCard({ name, type, status, episode, image }) {
+  if (type === "") {
+    type = "no type";
+  }
   const card = document.createElement("li");
   card.classList.add("card");
 
@@ -8,11 +10,8 @@ export function createCharacterCard() {
 
   const cardImage = document.createElement("img");
   cardImage.classList.add("card__image");
-  cardImage.setAttribute(
-    "src",
-    "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-  );
-  cardImage.setAttribute("alt", "Rick Sanches");
+  cardImage.setAttribute("src", image);
+  cardImage.setAttribute("alt", name);
 
   const cardImageGradient = document.createElement("div");
   cardImageGradient.classList.add("card__image-gradient");
@@ -22,7 +21,7 @@ export function createCharacterCard() {
 
   const cardTitle = document.createElement("h2");
   cardTitle.classList.add("card__title");
-  cardTitle.textContent = "Rick Sanchez";
+  cardTitle.textContent = name;
 
   const cardInfo = document.createElement("dl");
   cardInfo.classList.add("card__info");
@@ -33,7 +32,7 @@ export function createCharacterCard() {
 
   const cardInfoDescription1 = document.createElement("dd");
   cardInfoDescription1.classList.add("card__info-description");
-  cardInfoDescription1.textContent = "Alive";
+  cardInfoDescription1.textContent = status;
 
   const cardInfoTitle2 = document.createElement("dt");
   cardInfoTitle2.classList.add("card__info-title");
@@ -41,7 +40,7 @@ export function createCharacterCard() {
 
   const cardInfoDescription2 = document.createElement("dd");
   cardInfoDescription2.classList.add("card__info-description");
-  cardInfoDescription2.textContent = "Blabla";
+  cardInfoDescription2.textContent = type;
 
   const cardInfoTitle3 = document.createElement("dt");
   cardInfoTitle3.classList.add("card__info-title");
@@ -49,7 +48,7 @@ export function createCharacterCard() {
 
   const cardInfoDescription3 = document.createElement("dd");
   cardInfoDescription3.classList.add("card__info-description");
-  cardInfoDescription3.textContent = "51";
+  cardInfoDescription3.textContent = episode.length;
 
   card.append(cardImageContainer);
   cardImageContainer.append(cardImageGradient);

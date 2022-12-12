@@ -16,7 +16,6 @@ const maxPage = 1;
 const page = 1;
 const searchQuery = "";
 
-
 async function fetchCharacters() {
   cardContainer.innerHTML = "";
   try {
@@ -28,7 +27,8 @@ async function fetchCharacters() {
       console.log(data.results);
       const results = data.results;
       results.forEach((result) => {
-        createCharacterCard(results);
+        const cardItem = createCharacterCard(result);
+        cardContainer.append(cardItem);
       });
     } else {
       // Failure (Bad Response)
@@ -41,9 +41,21 @@ async function fetchCharacters() {
 }
 fetchCharacters();
 
-const searchResults = getSearchResults(searchBar);
+searchBar.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-const cardItem = createCharacterCard();
-console.log(cardItem);
-cardContainer.append(cardItem);
+  const formData = new FormData(event.target);
+  const data = Object.fromEntries(formData);
 
+  const searchResults = await getSearchResults(data.query);
+  showSearchResults(searchResults);
+});
+
+function showSearchResults(results) {
+  cardContainer.innerHTML = "";
+
+  results.forEach((result) => {
+    const cardItem = createCharacterCard(result);
+    cardContainer.append(cardItem);
+  });
+}
