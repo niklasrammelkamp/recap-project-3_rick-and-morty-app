@@ -18,6 +18,7 @@ const searchQuery = "";
 
 
 async function fetchCharacters() {
+  cardContainer.innerHTML = "";
   try {
     const response = await fetch("https://rickandmortyapi.com/api/character");
 
